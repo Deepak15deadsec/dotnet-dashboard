@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        .submenu {
+            display: none;
+        }
+
+        .submenu.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="submenu1">Submenu 1</a>
+                                <ul class="navbar-nav submenu" id="submenu1">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Submenu 1.1</a>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Header 1</th>
+                                                    <th>Header 2</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Data 1</td>
+                                                    <td>Data 2</td>
+                                                </tr>
+                                                <!-- Add more rows as needed -->
+                                            </tbody>
+                                        </table>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Submenu 1.2</a>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Header 1</th>
+                                                    <th>Header 2</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Data 1</td>
+                                                    <td>Data 2</td>
+                                                </tr>
+                                                <!-- Add more rows as needed -->
+                                            </tbody>
+                                        </table>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/submenu2">Submenu 2</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-md-9">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.slim.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var submenu1Toggle = document.querySelector('[data-toggle="submenu1"]');
+            var submenu1 = document.getElementById('submenu1');
+
+            submenu1Toggle.addEventListener('click', function (e) {
+                e.preventDefault();
+                submenu1.classList.toggle('show');
+            });
+        });
+    </script>
+</body>
+</html>
