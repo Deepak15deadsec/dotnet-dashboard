@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        .submenu {
+            display: none;
+            margin-left: 20px;
+        }
+
+        .submenu.show {
+            display: block;
+        }
+
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <div id="mainMenuTableContainer"></div>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-md-9">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.slim.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Simulated dynamic data from the backend for main menu items
+            var dynamicMainMenuData = [
+                { name: 'Submenu 1', submenus: [
+                    { name: 'Submenu 1.1', url: '/submenu1/child1' },
+                    { name: 'Submenu 1.2', url: '/submenu1/child2' },
+                    // Add more submenu items as needed
+                ] },
+                { name: 'Submenu 2', submenus: [
+                    { name: 'Submenu 2.1', url: '/submenu2/child1' },
+                    { name: 'Submenu 2.2', url: '/submenu2/child2' },
+                    // Add more submenu items as needed
+                ] },
+                { name: 'Submenu 3', submenus: [
+                    { name: 'Submenu 3.1', url: '/submenu3/child1' },
+                    { name: 'Submenu 3.2', url: '/submenu3/child2' },
+                    // Add more submenu items as needed
+                ] },
+                // Add more main menu items as needed
+            ];
+
+            var mainMenuTableContainer = document.getElementById('mainMenuTableContainer');
+            generateMainMenuTable(dynamicMainMenuData, mainMenuTableContainer);
+
+            // Function to generate main menu table dynamically based on data
+            function generateMainMenuTable(menuData, container) {
+                menuData.forEach(function (menuItem) {
+                    var table = document.createElement('table');
+                    table.className = 'submenu-table';
+
+                    var tr = document.createElement('tr');
+                    var td = document.createElement('td');
+
+                    var a = document.createElement('a');
+                    a.className = 'nav-link';
+                    a.href = '#';
+                    a.textContent = menuItem.name;
+                    a.setAttribute('data-toggle', 'submenu' + (menuData.indexOf(menuItem) + 1));
+
+                    td.appendChild(a);
+                    tr.appendChild(td);
+                    table.appendChild(tr);
+
+                    var submenuContainer = document.createElement('ul');
+                    submenuContainer.className = 'navbar-nav submenu';
+                    submenuContainer.id = 'submenu' + (menuData.indexOf(menuItem) + 1);
+
+                    generateSubmenuTable(menuItem.submenus, submenuContainer);
+
+                    tr = document.createElement('tr');
+                    td = document.createElement('td');
+                    td.appendChild(submenuContainer);
+                    tr.appendChild(td);
+                    table.appendChild(tr);
+
+                    container.appendChild(table);
+                });
+            }
+
+            // Function to generate submenu table dynamically based on data
+            function generateSubmenuTable(submenuData, submenuContainer) {
+                var tr = document.createElement('tr');
+                var td = document.createElement('td');
+
+                var table = document.createElement('table');
+                table.className = 'submenu-table';
+
+                submenuData.forEach(function (item) {
+                    var tr = document.createElement('tr');
+                    var td = document.createElement('td');
+
+                    var a = document.createElement('a');
+                    a.className = 'nav-link';
+                    a.href = item.url;
+                    a.textContent = item.name;
+
+                    td.appendChild(a);
+                    tr.appendChild(td);
+                    table.appendChild(tr);
+                });
+
+                td.appendChild(table);
+                tr.appendChild(td);
+                submenuContainer.appendChild(tr);
+            }
+
+            // Set up event listeners for submenu toggles
+            var submenuToggles = document.querySelectorAll('[data-toggle^="submenu"]');
+            var submenus = document.querySelectorAll('.submenu');
+
+            submenuToggles.forEach(function (toggle) {
+                toggle.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    var targetId = this.getAttribute('data-toggle');
+                    var targetSubmenu = document.getElementById(targetId);
+
+                    submenus.forEach(function (submenu) {
+                        if (submenu !== targetSubmenu) {
+                            submenu.classList.remove('show');
+                        }
+                    });
+
+                    targetSubmenu.classList.toggle('show');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
