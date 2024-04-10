@@ -7,11 +7,17 @@
     <style>
         .submenu {
             display: none;
+            margin-left: 20px; /* Adjust the margin for child submenus */
         }
 
         .submenu.show {
             display: block;
         }
+
+        /* Style for the table within submenu */
+  
+
+     
     </style>
 </head>
 <body>
@@ -27,47 +33,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#" data-toggle="submenu1">Submenu 1</a>
                                 <ul class="navbar-nav submenu" id="submenu1">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Submenu 1.1</a>
-                                        <table class="table table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>Header 1</th>
-                                                    <th>Header 2</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Data 1</td>
-                                                    <td>Data 2</td>
-                                                </tr>
-                                                <!-- Add more rows as needed -->
-                                            </tbody>
-                                        </table>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Submenu 1.2</a>
-                                        <table class="table table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>Header 1</th>
-                                                    <th>Header 2</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Data 1</td>
-                                                    <td>Data 2</td>
-                                                </tr>
-                                                <!-- Add more rows as needed -->
-                                            </tbody>
-                                        </table>
-                                    </li>
+                                    <!-- Dynamic generation of submenu items using JavaScript -->
                                 </ul>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/submenu2">Submenu 2</a>
-                            </li>
+                            <!-- Add more menu items or dynamic submenus as needed -->
                         </ul>
                     </div>
                 </nav>
@@ -82,16 +51,50 @@
 
     <script src="~/lib/jquery/dist/jquery.slim.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var submenu1Toggle = document.querySelector('[data-toggle="submenu1"]');
-            var submenu1 = document.getElementById('submenu1');
+  
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Simulated dynamic data from the backend for Submenu 1
+        var dynamicDataSubmenu1 = [
+            { name: 'Submenu 1.1', url: '/submenu1/child1' },
+            { name: 'Submenu 1.2', url: '/submenu1/child2' },
+               { name: 'Submenu 1.3', url: '/submenu1/child2' },
+            // Add more dynamic data as needed
+        ];
 
-            submenu1Toggle.addEventListener('click', function (e) {
-                e.preventDefault();
-                submenu1.classList.toggle('show');
-            });
+        var submenuContainer1 = document.getElementById('submenu1');
+
+        // Create a table for submenu 1
+        var table = document.createElement('table');
+        table.className = 'submenu-table';
+
+        // Populate Submenu 1 dynamically based on data
+        dynamicDataSubmenu1.forEach(function (item) {
+            var tr = document.createElement('tr');
+            var td = document.createElement('td');
+
+            var a = document.createElement('a');
+            a.className = 'nav-link';
+            a.href = item.url;
+            a.textContent = item.name;
+
+            td.appendChild(a);
+            tr.appendChild(td);
+            table.appendChild(tr);
         });
-    </script>
+
+        // Append the table to the submenu container
+        submenuContainer1.appendChild(table);
+
+        // Set up event listener for submenu toggle
+        var submenuToggle1 = document.querySelector('[data-toggle="submenu1"]');
+        submenuToggle1.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // Toggle the visibility of the submenu
+            submenuContainer1.classList.toggle('show');
+        });
+    });
+</script>
 </body>
 </html>

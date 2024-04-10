@@ -42,8 +42,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc3VibWVudTIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Welcome/Documents/code/sample/Pages/_Dynamictable.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0R5bmFtaWN0YWJsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Welcome/Documents/code/sample/Pages/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Welcome/Documents/code/sample/Pages/_Tablelay.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1RhYmxlbGF5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Welcome/Documents/code/sample/Pages/_ViewImports.cshtml]

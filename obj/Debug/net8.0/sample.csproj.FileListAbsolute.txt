@@ -28,3 +28,4 @@ C:\Users\Welcome\Documents\code\sample\obj\Debug\net8.0\refint\sample.dll
 C:\Users\Welcome\Documents\code\sample\obj\Debug\net8.0\sample.pdb
 C:\Users\Welcome\Documents\code\sample\obj\Debug\net8.0\sample.genruntimeconfig.cache
 C:\Users\Welcome\Documents\code\sample\obj\Debug\net8.0\ref\sample.dll
+C:\Users\Welcome\Documents\code\sample\obj\Debug\net8.0\sample.sourcelink.json
