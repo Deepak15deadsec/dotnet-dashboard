@@ -1,0 +1,79 @@
+# Ignore Visual Studio temporary files, build results, and
+# user-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignored by Visual Studio
+.vscode/
+.vs/
+.vscode/*
+
+# Ignore build results
+/bin
+/obj
+Debug/
+Release/
+out/
+
+# Ignore NuGet Packages
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Ignore logs and database files
+*.log
+*.sql
+*.sqlite
+*.mdf
+*.ldf
+
+# Ignore publish output
+.publish/
+
+# ASP.NET Core SignalR service worker
+wwwroot/*.cache
+wwwroot/service-worker.js
+
+# Ignore IDE-specific files
+*.csproj.user
+*.vbproj.user
+
+# Ignore test results
+TestResults/
+
+# Ignore other files
+.DS_Store
+*.class
+*.swp
+*.swo
+*.tmp
+*.bak
+*.orig
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Windows image file caches
+*.stackdump
+*.ncrunch*
+*_ReSharper.*
+_ReSharper.Caches
+
+# Rider settings
+.idea/
+.idea/*
+
+# Tooling folders
+node_modules/
+bower_components/
+jspm_packages/
+
+# ASP.NET 5
+*.
