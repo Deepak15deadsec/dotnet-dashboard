@@ -8,6 +8,8 @@
         .submenu {
             display: none;
             margin-left: 20px;
+            border-left: 2px solid #007bff;
+            padding-left: 10px;
         }
 
         .submenu.show {
@@ -23,7 +25,36 @@
             margin-bottom: 5px;
         }
 
-       
+        .nav-link {
+            color: #007bff;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-link:hover {
+            background-color: #f8f9fa;
+        }
+
+        .submenu-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .submenu-table td {
+            padding: 8px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .submenu-table td a {
+            color: #495057;
+            text-decoration: none;
+        }
+
+        .submenu-table td a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
